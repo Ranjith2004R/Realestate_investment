@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ property.name }} - Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'investments/style.css' %}">
+</head>
+<body>
+    <h1>{{ property.name }}</h1>
+    <img src="{{ property.image.url }}" alt="{{ property.name }}">
+    <p>{{ property.description }}</p>
+    <p><strong>Location:</strong> {{ property.location }}</p>
+    <p><strong>Price:</strong> ${{ property.price }}</p>
+    <a href="{% url 'invest' property.id %}">Invest Now</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Investment</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'investments/style.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <div>
+        <a href="{% url 'add_property' %}">Add New Property</a>
+    </div>
+    <h1>Available Properties for Investment</h1>
+    <div class="property-list">
+        {% for property in properties %}
+    <div class="property-card">
+        <h2>{{ property.name }}</h2>
+        {% if property.image %}
+            <img src="{{ property.image.url }}" alt="{{ property.name }}">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+        <p>{{ property.description }}</p>
+        <p><strong>Price:</strong> ${{ property.price }}</p>
+        <a href="{% url 'property_detail' property.id %}">View Details</a>
+    </div>
+{% endfor %}
+    </div>
+</body>
+</html>
